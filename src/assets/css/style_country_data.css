@@ -1,0 +1,21 @@
+/*============COUNTRY DATA STYLE================ */
+
+.back_btn{
+    background: #fff;
+}
+/* COUTRY CARD  */
+.country_flag_single img{
+    width:100%;
+    height:auto;
+}
+
+.textual_data_single .country_name_single {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.textual_data_single .country_info_list_single ,.textual_data_single .additional_info {
+    line-height: 1.5;
+}
+.textual_data_single ul li {
+    font-size: 0.9em;
+}
