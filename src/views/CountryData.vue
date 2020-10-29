@@ -5,8 +5,9 @@
         <div class="col-md-2 col-sm-4 col-xs-4 col-lg-3">
           <div class="back_button d-flex mt-3">
             <button
-              class="back_btn text-dark btn btn-sm btn-outline-dark"
+              class="back_btn btn btn-sm" 
               @click="goBack"
+              :class="isDarkModeOn?'btn-outline-light':'btn-outline-dark'"
             >
               <span><i class="fa fa-long-arrow-left"></i></span> Back
             </button>
@@ -94,6 +95,7 @@
 
 <script>
 import axios from "axios";
+import {mapGetters} from 'vuex';
 export default {
   name: "CountryData",
   data() {
@@ -101,12 +103,12 @@ export default {
       countryname: "",
       country_full_data: [],
       additional_info: {},
-      // isDarkMode:this.$store.getters.currentStateOfMode //Get value of mode from store
+      // isDarkMode:this.$store.getters.isDarkModeOn //Get value of mode from store
     };
   },
   mounted() {
     var self = this;
-    // self.isDarkMode = this.$store.getters.currentStateOfMode; //Get value of dark mode from store
+    // self.isDarkMode = this.$store.getters.isDarkModeOn; //Get value of dark mode from store
     self.countryname = this.$route.params.country_name; //Get country name from router for sending request to api
     axios
       .get(
@@ -136,6 +138,9 @@ export default {
       this.$router.go(-1); //go back by 1 page
     },
   },
+  computed:{
+    ...mapGetters(['isDarkModeOn'])
+  }
 };
 </script>
 

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <header>
-      <div id="nav" :class="isDarkMode? 'text-light bg-dark-custom-grey':'text-dark bg-light'">
-      <router-link to="/"  class="link" :class="isDarkMode? 'text-light':'text-dark'">Where in the world?</router-link>
+      <div id="nav" :class="isDarkModeOn? 'text-light bg-dark-custom-grey':'text-dark bg-light'">
+      <router-link to="/"  class="link" :class="isDarkModeOn? 'text-light':'text-dark'">Where in the world?</router-link>
       <div class="change_mode" @click="change_mode">
         <span class="mode-btn-wrapper"><i class="fa fa-moon-o"></i>Dark mode</span>
       </div>
@@ -12,21 +12,23 @@
   </div>
 </template>
 <script>
- 
+ import {mapGetters} from 'vuex'
 export default {
   name:'App',
   data(){
     return{
-      isDarkMode:false
+      
     }
+  },
+  computed:{
+    ...mapGetters(['isDarkModeOn'])
   },
   methods:{
     change_mode(){
-      this.isDarkMode = !this.isDarkMode;
       var body = document.getElementsByTagName('body')[0];
-      body.style.background = this.isDarkMode?"#202d36":"#fff";
-      body.style.color = this.isDarkMode?"#fff":"#202d36";
-      this.$store.commit('changeMode',this.isDarkMode);
+      body.style.background = this.isDarkModeOn?"#fff":"#202d36";
+      body.style.color = this.isDarkModeOn?"#fff":"#202d36";
+      this.$store.commit('changeMode',this.isDarkModeOn);
     }
   }
 }

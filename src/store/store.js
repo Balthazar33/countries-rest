@@ -7,13 +7,13 @@ export default new Vuex.Store({
             isDarkMode:false
     },
     getters:{
-        currentStateOfMode:state=>{
+        isDarkModeOn:state=>{
             return state.isDarkMode;
         }
     },
     mutations:{
-        changeMode(state,payload){
-            state.isDarkMode = payload;
+        changeMode(state){
+            state.isDarkMode = !state.isDarkMode;
         }
     }
-}) 
+});

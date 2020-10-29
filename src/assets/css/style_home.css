@@ -26,6 +26,19 @@
 .country_card {
     background: #fff;
     cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s all;
+}
+.country_card:hover {
+    box-shadow: none;
+    transform: scale(1.03);
+}
+.card_shadow_light {
+    box-shadow: 0px 2px 8px rgba(255,255,255,0.56);
+}
+.card_shadow_dark {
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.26);
 }
 
 .textual_data .country_name{
