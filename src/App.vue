@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <helper-popup v-if="showHelper" @close-helper="closeHelper"></helper-popup>
     <header>
       <div id="nav" :class="isDarkModeOn? 'text-light bg-dark-custom-grey':'text-dark bg-light'">
       <router-link to="/"  class="link" :class="isDarkModeOn? 'text-light':'text-dark'">Where in the world?</router-link>
@@ -13,15 +14,25 @@
 </template>
 <script>
  import {mapGetters} from 'vuex'
+ import HelperPopup from './components/HelperPopup.vue'
 export default {
   name:'App',
+  components:{
+    HelperPopup
+  },
   data(){
     return{
-      
+      showHelper:false
     }
   },
   computed:{
     ...mapGetters(['isDarkModeOn'])
+  },
+  mounted(){
+    var self = this;
+    setTimeout(()=>{
+      self.showHelper = true;
+    },3000)
   },
   methods:{
     change_mode(){
@@ -29,6 +40,9 @@ export default {
       body.style.background = this.isDarkModeOn?"#fff":"#202d36";
       body.style.color = this.isDarkModeOn?"#fff":"#202d36";
       this.$store.commit('changeMode',this.isDarkModeOn);
+    },
+    closeHelper(){
+      this.showHelper = false;
     }
   }
 }
