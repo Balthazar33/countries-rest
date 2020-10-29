@@ -72,8 +72,11 @@ export default {
 
 @media only screen and (max-width: 767px) {
     .help_text{
-        left:0;
-        top:20%;
+        left: 0;
+    top: 20%;
+    right: 0;
+    width: 90%;
+    margin: 0 auto;
     }
 }
 
